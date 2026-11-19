@@ -1,50 +1,38 @@
-# automator-vlan-scanner
+# Automator VLAN Scanner (Full LAN & MAC Table Auditor)
 
-Comprehensive Python scanner to audit single or all VLANs/LANs across network infrastructure, validating VLAN database entries, active MAC address learning, and traffic presence.
+Ferramenta de automação desenvolvida em Python para auditoria profunda de uma ou de todas as VLANs/LANs em uma topologia de rede, cruzando a existência da VLAN na base do switch com o aprendizado ativo de MAC addresses para validar tráfego real antes de migrações ou descomissionamentos.
 
+## Funcionalidades
 
+- **Escaneamento Flexível (Única ou Todas as VLANs):** Permite auditar tanto uma VLAN específica quanto realizar a varredura completa de todas as LANs configuradas nos equipamentos do inventário.
+- **Correlação VLAN + Tabela MAC:** Verifica não apenas se a VLAN está criada (`VLAN database`), mas também se existem dispositivos ativos aprendidos na tabela CAM (`MAC address-table`) dentro daquele domínio de broadcast.
+- **Diagnóstico de Tráfego Real:** Identifica rapidamente VLANs ociosas ("fantasmas") sem MACs aprendidos versus segmentos em produção com tráfego ativo.
+- **Execução Multi-Switch:** Varre toda a infraestrutura em lote com tratamento robusto de falhas de conexão SSH e timeouts.
 
-\# Automator VLAN Scanner (Full LAN \& MAC Table Auditor)
+## Tecnologias Utilizadas
 
+- **Python 3.x**
+- **Netmiko / Paramiko:** Gerenciamento automatizado de sessões SSH e extração de tabelas L2/CAM em switches de rede.
 
+## Como Utilizar
 
-Ferramenta de automacao desenvolvida em Python para auditoria profunda de uma ou de todas as VLANs/LANs em uma topologia de rede, cruzando a existencia da VLAN na base do switch com o aprendizado ativo de MAC addresses para validar trafego real antes de migracoes ou descomissionamentos.
+1. Clone o repositório:
 
+       git clone https://github.com/vinicius-master/automator-vlan-scanner.git
+       cd automator-vlan-scanner
 
+2. Instale as dependências:
 
-\## Funcionalidades
+       pip install -r requirements.txt
 
+3. Preencha o arquivo de inventário (`devices.txt`) com os endereços IP dos switches a serem escaneados.
 
+4. Execute o script e escolha o modo de varredura (VLAN específica ou varredura total):
 
-\- \*\*Escaneamento Flexivel (Unica ou Todas as VLANs):\*\* Permite auditar tanto uma VLAN especifica quanto realizar a varredura completa de todas as LANs configuradas nos equipamentos do inventario.
+       python vlan-scanner.py
 
-\- \*\*Correlacao VLAN + Tabela MAC:\*\* Verifica nao apenas se a VLAN esta criada (`VLAN database`), mas tambem se existem dispositivos ativos aprendidos na tabela CAM (`MAC address-table`) dentro daquele dominio de broadcast.
+   *(Ajuste o nome do arquivo `.py` conforme o script principal na pasta).*
 
-\- \*\*Diagnostico de Trafego Real:\*\* Identifica rapidamente VLANs ociosas ("fantasmas") sem MACs aprendidos versus segmentos em producao com trafego ativo.
+## Licença
 
-\- \*\*Execucao Multi-Switch:\*\* Varre toda a infraestrutura em lote com tratamento robusto de falhas de conexao SSH e timeouts.
-
-
-
-\## Tecnologias Utilizadas
-
-
-
-\- \*\*Python 3.x\*\*
-
-\- \*\*Netmiko / Paramiko:\*\* Gerenciamento automatizado de sessoes SSH e extracao de tabelas L2/CAM em switches de rede.
-
-
-
-\## Como Utilizar
-
-
-
-1\. Clone o repositorio:
-
-&#x20;  ```bash
-
-&#x20;  git clone \[https://github.com/vinicius-master/automator-vlan-scanner.git](https://github.com/vinicius-master/automator-vlan-scanner.git)
-
-&#x20;  cd automator-vlan-scanner
-
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
