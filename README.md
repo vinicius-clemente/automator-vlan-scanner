@@ -18,7 +18,7 @@ Ferramenta de automação desenvolvida em Python para auditoria profunda de uma 
 
 1. Clone o repositório:
 
-       git clone https://github.com/vinicius-master/automator-vlan-scanner.git
+       git clone https://github.com/vinicius-clemente/automator-vlan-scanner.git
        cd automator-vlan-scanner
 
 2. Instale as dependências:
